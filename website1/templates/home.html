@@ -1,4 +1,27 @@
-{% extends "index.html"%}{%block title%}Home{%endblock%}
-{%block content%}
-<h1>My homepage</h1>
+{% extends "index.html"%}{%block title%}Home{%endblock%} {%block content%}
+<ul class="list-group list-group-flush" id="notes">
+  {%for note in user.notes %}
+  <li class="list-group-item">
+    {{note.text}}
+    <i class="bi bi-trash position-absolute top-10 end-0" style="cursor: pointer;" ></i>
+  </li>
+  {%endfor%}
+</ul>
+
+<form method="POST">
+  <textarea
+    class="form-control"
+    name="note"
+    placeholder="Write a Note"
+    id="floatingTextarea2"
+    style="height: 70px; margin-top: 10px"
+  ></textarea>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    style="padding: 10px; margin: 10px"
+  >
+    Add Note
+  </button>
+</form>
 {%endblock%}
